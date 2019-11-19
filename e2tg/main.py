@@ -29,12 +29,12 @@ def load_groups_for_occupations(occupations, number_of_groups=3):
 def get_occupations_from_text(headline, text):
     # Get occupations from textdocenrich
     header = {
-        'api-key': settings.API_KEY_ENRICH_TEXTDOCS,
+        'api-key': settings.ENRICH_APIKEY,
         'accept': 'application/json',
         'Content-Type': 'application/json'
     }
     payload = {"doc_headline": headline, "doc_text": text}
-    r = requests.post(url=settings.URL_ENRICH_TEXTDOCS_BINARY_SERVICE, headers=header,
+    r = requests.post(url=settings.ENRICH_URL, headers=header,
                       json=payload)
     r.raise_for_status()
 
