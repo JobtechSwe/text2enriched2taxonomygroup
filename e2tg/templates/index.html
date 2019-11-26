@@ -5,8 +5,8 @@
     <title>Enriched2TaxonomyGroup</title>
     <script language="javascript">
         function clearForm() {
-            document.getElementById("doc_headline").value = ''
-            document.getElementById("doc_text").value = ''
+            document.getElementById("headline").value = ''
+            document.getElementById("text").value = ''
             document.getElementById("results").innerHTML = ''
             document.getElementById("doc_headline").focus()
         }
@@ -18,12 +18,12 @@
 <div id="form" style="float:left; padding:3em">
 <form method="post">
     <p>Rubrik</p>
-    <input id="doc_headline" type="text" size="80" name="doc_headline" value="{{headline}}"/><br/>
+    <input id="headline" type="text" size="80" name="headline" value="{{headline}}"/><br/>
     <p>Annonstext</p>
-    <textarea id="doc_text" rows="5" cols="80" name="doc_text">{{text}}</textarea>
+    <textarea id="text" rows="5" cols="80" name="text">{{text}}</textarea>
     <br/>
-    <input type="submit"/>
     <input type="button" value="Nollställ" onclick="javascript:clearForm()"/>
+    <input type="submit" value="Skicka"/>
     </form>
 </div>
 <div id="results">
@@ -33,8 +33,11 @@
     <h1>&quot;{{occupation}}&quot;</h1>
     <h3>Rekommenderade taxonomigrupper</h3>
     {% for tg in group %}
-        <b>{{tg.taxonomy_id}} ({{tg.concept_id}})</b> – {{tg.label}}
-        <p><i>{{tg.description}}</i></p>
+    <p>
+        <small><a href="/show-siblings/{{tg.concept_id}}">{{tg.parent_label}}</a></small><br/>
+        <b>{{tg.taxonomy_id}} ({{tg.concept_id}})</b> – {{tg.label}}<br/>
+        <i>{{tg.description}}</i>
+    </p>
     {% endfor %}
 <hr/>
 {% endfor %}

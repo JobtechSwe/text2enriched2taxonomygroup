@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Närliggande Grupper</title>
+</head>
+<body>
+<div>
+    <h1>{{siblings.occupation_field_label}}</h1>
+    <h3>Underliggande taxonomigrupper</h3>
+    {% for group in siblings.groups %}
+    <p>
+        <b>{{group.taxonomy_id}} ({{group.concept_id}})</b> – {{group.label}}<br/>
+        <i>{{group.description}}</i>
+    </p>
+    {% endfor %}
+<hr/>
+</div>
+
+</body>
+</html>
