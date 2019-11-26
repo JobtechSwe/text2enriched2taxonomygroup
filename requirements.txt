@@ -1,0 +1,6 @@
+elasticsearch
+requests
+flask
+certifi
+pytest
+pytest-runner
